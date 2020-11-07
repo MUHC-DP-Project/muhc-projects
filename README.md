@@ -1,2 +1,2 @@
 # muhc-projects
-Microservice for projects 
+Microservice for projects.
