@@ -1,5 +1,7 @@
+[![Build Status](https://travis-ci.com/MUHC-DP-Project/pbrn-projects.svg?branch=main)](https://travis-ci.com/MUHC-DP-Project/pbrn-projects)
+
 # pbrn-projects
-[![Build Status](https://travis-ci.com/MUHC-DP-Project/muhc-projects.svg?branch=main)](https://travis-ci.com/MUHC-DP-Project/muhc-projects)
+
 ## Purpose 
 
 pbrn-projects is a microservice serving as a backend for all project-related APIs. 
