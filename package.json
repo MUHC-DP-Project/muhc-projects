@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Microservice for projects",
   "dependencies": {
+    "@types/mongoose": "^5.10.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
