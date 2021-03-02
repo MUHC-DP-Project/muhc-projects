@@ -8,7 +8,7 @@ import { IProject } from "../interfaces/IProject";
 import { v1 as uuidv1 } from "uuid";
 
 const projectController = {
-    index: async (req: Request, res: Response) => {
+    getall: async (req: Request, res: Response) => {
         try {
             const projects = await projectDBInteractions.all();
             res.status(statusCodes.SUCCESS).json(projects);
@@ -23,7 +23,7 @@ const projectController = {
             res.status(statusCodes.MISSING_PARAMS).json(
                 {
                     status: 422,
-                    message: `you have an error sorry`
+                    message: `Error: there are missing parameters.`
                 }
             );
         } else {

@@ -7,7 +7,7 @@ const projectRouter: Router = Router();
 projectRouter.get(
     "/",
     projectValidator("GET /projects"),
-    projectController.index
+    projectController.getall
 );
 
 projectRouter.post(
@@ -15,3 +15,5 @@ projectRouter.post(
     projectValidator("POST /projects"),
     projectController.create
 );
+
+export {projectRouter};
