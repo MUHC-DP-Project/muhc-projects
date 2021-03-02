@@ -21,7 +21,10 @@ const projectController = {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.status(statusCodes.MISSING_PARAMS).json(
-                errors.formatWith(errorMessage).array()[0]
+                {
+                    status: 422,
+                    message: `you have an error sorry`
+                }
             );
         } else {
             try {
