@@ -4,11 +4,14 @@
   "description": "Microservice for projects",
   "dependencies": {
     "@types/mongoose": "^5.10.1",
+    "@types/uuid": "^8.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.7.0",
     "helmet": "^4.2.0",
-    "mongoose": "^5.10.17"
+    "mongoose": "^5.10.17",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",

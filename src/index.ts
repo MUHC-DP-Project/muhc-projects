@@ -3,6 +3,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import helmet from "helmet";
 import connectDB from "./database/db_config";
+import {projectRouter} from './routes/project';
 
 const app = express();
 const port = 8080; // default port to listen
@@ -21,6 +22,8 @@ connectDB(process.env.MONGO_DB_URI);
 app.get( "/", ( req, res ) => {
     res.send( "Hello world!" );
 } );
+
+app.use('/projects', projectRouter);
 
 // start the Express server
 app.listen( port, () => {
