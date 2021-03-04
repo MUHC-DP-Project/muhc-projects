@@ -27,6 +27,7 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("projectMetadata", "Missing 'projectMetadata'").exists(),
             ];
         }
+
         case "PUT /projects/:projectId": {
             return [
                 param("projectId", "Invalid or missing ':projectId'")
@@ -43,6 +44,14 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("numClinicStaff", "Invalid or missing 'numClinicStaff'").isNumeric().exists(),
                 body("numPatients", "Invalid or missing 'numPatients'").isNumeric().exists(),
                 body("projectMetadata", "Missing 'projectMetadata'").exists(),
+            ];
+        }
+
+        case "DELETE /projects/:projectId": {
+            return [
+                param("projectId", "Invalid or missing ':projectId'")
+                    .exists()
+                    .isMongoId()
             ];
         }
     }
