@@ -8,11 +8,6 @@ const projectSchema: Schema = new Schema(
         title: String,
         description: String,
         creationDate: Date,
-
-        // Keeping project ID as string rather than mongoose.ObjectId
-        // Might need changing in the future
-        projectId:String,
-
         fundingStatus: Boolean,
         reviewPassed: Boolean,
         feasibilityApproval: Boolean,

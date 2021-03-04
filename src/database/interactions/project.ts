@@ -11,7 +11,7 @@ export const projectDBInteractions = {
     },
 
     find: (projectId: string): Promise<IProjectModel> => {
-        return Project.findOne({ _id: projectId }).exec();
+        return Project.findOne({ _id : projectId }).exec();
     },
 
 }

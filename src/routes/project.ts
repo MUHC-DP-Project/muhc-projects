@@ -10,6 +10,12 @@ projectRouter.get(
     projectController.getall
 );
 
+projectRouter.get(
+    "/:projectId",
+    projectValidator("GET /projects/:projectId"),
+    projectController.show
+);
+
 projectRouter.post(
     "/",
     projectValidator("POST /projects"),
