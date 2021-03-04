@@ -22,4 +22,10 @@ projectRouter.post(
     projectController.create
 );
 
+projectRouter.delete(
+    "/:projectId",
+    projectValidator("DELETE /projects/:projectId"),
+    projectController.delete
+);
+
 export {projectRouter};

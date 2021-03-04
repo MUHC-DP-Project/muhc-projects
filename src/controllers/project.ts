@@ -53,7 +53,7 @@ const projectController = {
             res.status(statusCodes.MISSING_PARAMS).json(
                 {
                     status: 422,
-                    message: `Error: there are missing parameters.`
+                    message: errors.mapped()
                 }
             );
         } else {
@@ -72,6 +72,34 @@ const projectController = {
             } catch (error) {
                 res.status(statusCodes.SERVER_ERROR).json(error);
             }
+        }
+    },
+    delete: async (req: Request, res: Response) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(statusCodes.MISSING_PARAMS).json(
+                {
+                    status: 422,
+                    message: `Error: there are missing parameters.`
+                }
+            );
+        } else {
+            try {
+                const project = await projectDBInteractions.find(req.params.projectId);
+                if (!project) {
+                    res.status(statusCodes.NOT_FOUND).json(
+                        {
+                            status: statusCodes.NOT_FOUND,
+                            message: "Project not found"
+                        }
+                    );
+                }
+                project.delete();
+                res.status(statusCodes.SUCCESS).send();
+            } catch(err) {
+                res.status(statusCodes.SERVER_ERROR).send(err);
+            }
+
         }
     }
 }
