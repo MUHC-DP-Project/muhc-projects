@@ -7,9 +7,8 @@ export function projectValidator(method: string): ValidationChain[] {
         }
         case "GET /projects/:projectId": {
             return [
-                param("projectId", "Invalid or missing ':projectId'")
-                    .exists()
-                    .isMongoId()
+                param("projectId", "Invalid or missing ':projectId'").exists()
+                .isMongoId()
             ];
         }
         case "POST /projects": {

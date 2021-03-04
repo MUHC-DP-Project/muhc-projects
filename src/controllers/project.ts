@@ -16,6 +16,37 @@ const projectController = {
             res.status(statusCodes.SERVER_ERROR).json(err);
         }
     },
+
+    show: async (req: Request, res: Response) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(statusCodes.MISSING_PARAMS).json(
+                {
+                    status: 422,
+                    message: `Error: there are missing parameters.`
+                }
+            );
+        } else {
+            try {
+                const { projectId } = req.params;
+
+                const project: IProjectModel = await projectDBInteractions.find(
+                    projectId
+                );
+
+                project
+                    ? res.status(statusCodes.SUCCESS).json(project)
+                    : res.status(statusCodes.NOT_FOUND).json({
+                          status: statusCodes.NOT_FOUND,
+                          message: "Problem not found"
+                      });
+
+            } catch (error) {
+                res.status(statusCodes.SERVER_ERROR).json(error);
+            }
+        }
+    },
+
     create: async (req: Request, res: Response) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -31,8 +62,7 @@ const projectController = {
 
                // HERE IS WHERE WE PROCESS INPUT AND CONVERT INTO OBJECT
                 const projectData: IProject = {
-                    ...project,
-                    projectId: uuidv1()
+                    ...project
                 };
 
                 const newProject: IProjectModel = await projectDBInteractions.create(
