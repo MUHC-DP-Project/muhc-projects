@@ -27,5 +27,12 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("projectMetadata", "Missing 'projectMetadata'").exists(),
             ];
         }
+        case "DELETE /projects/:projectId": {
+            return [
+                param("projectId", "Invalid or missing ':projectId'")
+                    .exists()
+                    .isMongoId()
+            ];
+        }
     }
 }
