@@ -44,6 +44,43 @@ const projectController = {
                 res.status(statusCodes.SERVER_ERROR).json(error);
             }
         }
+    },
+    update: async (req: Request, res: Response) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(statusCodes.MISSING_PARAMS).json(
+                {
+                    status: 422,
+                    message: `Error: updating was done incorrectly.`
+                }
+            );
+        } else {
+            try {
+                const { projectId } = req.params;
+                const project: IProjectModel = await projectDBInteractions.find(projectId);
+
+                if(!project)
+                    res.status(statusCodes.NOT_FOUND).json({
+                        status: statusCodes.NOT_FOUND,
+                        message: "Project not found"
+                    });
+                else{
+                    const updatedProjectBody: IProject = {
+                        ...req.body,
+                    };
+
+                    const updatedProject: IProjectModel = await projectDBInteractions.update(
+                        projectId,
+                        updatedProjectBody
+                    );
+
+                    res.status(statusCodes.SUCCESS).json(updatedProject);
+
+                }
+            } catch (error) {
+                res.status(statusCodes.SERVER_ERROR).json(error);
+            }
+        }
     }
-}
+};
 export { projectController };

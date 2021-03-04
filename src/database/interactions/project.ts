@@ -14,4 +14,13 @@ export const projectDBInteractions = {
         return Project.findOne({ _id: projectId }).exec();
     },
 
+    update: (
+        projectId: string,
+        newProject: IProject
+    ): Promise<IProjectModel> => {
+        return Project.findByIdAndUpdate(projectId, newProject, {
+            new: true
+        }).exec();
+    },
+
 }

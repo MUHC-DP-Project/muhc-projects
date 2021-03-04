@@ -16,4 +16,10 @@ projectRouter.post(
     projectController.create
 );
 
+projectRouter.put(
+    "/:projectId",
+    projectValidator("PUT /projects/:projectId"),
+    projectController.update
+);
+
 export {projectRouter};
