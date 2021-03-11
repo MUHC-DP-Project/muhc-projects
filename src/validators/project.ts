@@ -59,24 +59,28 @@ export function projectValidator(method: string): ValidationChain[] {
                     body("PIListOfUsers", "Invalid or missing 'PIListOfUsers'").isArray().exists(),
                     body("CoIListOfUsers", "Invalid or missing 'CoIListOfUsers'").isArray().exists(),
                     body("ColListOfUsers", "Invalid or missing 'ColListOfUsers'").isArray().exists(),
+    
                     body("studySize", "Invalid or missing 'studySize'").isString().exists(),
                     body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().exists(),
+    
                     body("officialProjectTitle", "Invalid or missing 'officialProjectTitle'").isString().exists(),
                     body("briefProjectTitle", "Invalid or missing 'briefProjectTitle'").isString().exists(),
-                    body("startDateProject", "Invalid or missing 'startDateProject'").isDate().exists(),
-                    body("endDateProject", "Invalid or missing 'endDateProject'").isDate().exists(),
+                    body("startDateProject", "Invalid or missing 'startDateProject'").isString().exists(),
+                    body("endDateProject", "Invalid or missing 'endDateProject'").isString().exists(),
                     body("projectDescription", "Invalid or missing 'projectDescription'").isString().exists(),
                     body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
                     body("projectSought", "Invalid or missing 'projectSought'").isString().exists(),
                     body("agencyName", "Invalid or missing 'agencyName'").isString().exists(),
-
+    
                     body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().exists(),
                     body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().exists(),
                     body("studyIRBREBSelect", "Invalid or missing 'studyIRBREBSelect'").isString().exists(),
                     body("studyIRBREBText", "Invalid or missing 'studyIRBREBText'").isString().exists(),
+    
                     body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().exists(),
                     body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().exists(),
                     body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().exists(),
+    
                     body("projectConception", "Invalid or missing 'projectConception'").isString().exists(),
                     body("projectDesigned", "Invalid or missing 'projectDesigned'").isString().exists(),
                     body("fundingSoughtOrIgnoredConsidered", "Invalid or missing 'fundingSoughtOrIgnoredConsidered'").isString().exists(),
