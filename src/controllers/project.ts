@@ -49,6 +49,7 @@ const projectController = {
 
     create: async (req: Request, res: Response) => {
         const errors = validationResult(req);
+
         if (!errors.isEmpty()) {
             res.status(statusCodes.MISSING_PARAMS).json(
                 {

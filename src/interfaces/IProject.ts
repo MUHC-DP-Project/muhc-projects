@@ -1,14 +1,39 @@
 export interface IProject {
-    title: string;
-    description: string;
-    creationDate: Date;
     projectId: string;
-    fundingStatus: boolean;
-    reviewPassed: boolean;
-    feasibilityApproval: boolean;
-    numClinicians: number;
-    numParticipants: number;
-    numStudents: number;
-    numClinicStaff: number;
-    numPatients: number;
+    // participants
+    PIListOfUsers: string[];
+    CoIListOfUsers: string[];
+    ColListOfUsers: string[];
+    studySize:string;
+    studyParticipants:string[];
+
+    // Project
+    officialProjectTitle:string;
+    briefProjectTitle:string;
+    startDateProject: Date;
+    endDateProject: Date;
+    projectDescription: string;
+    projectFund:string;
+    projectSought:string;
+    agencyName:string;
+
+    scientificPeerReviewSelect:string;
+    scientificPeerReviewText:string;
+    studyIRBREBSelect:string;
+    studyIRBREBText:string;
+
+    // ResearchAndMethodology
+    intendedMcgillLocation: [];
+    intendedNonMcgillLocation: [];
+    researchAndMethodology: [];
+
+    projectConception: string;
+    projectDesigned: string;
+    fundingSoughtOrIgnoredConsidered: string;
+    ethicsApproval: string;
+    recruitment: string;
+    dataCollection: string;
+    dataAnalysis: string;
+    knowledgeTranslationDissemination: string;
+
 }

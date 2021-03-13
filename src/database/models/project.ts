@@ -5,17 +5,40 @@ export interface IProjectModel extends IProject, Document {}
 
 const projectSchema: Schema = new Schema(
     {
-        title: String,
-        description: String,
-        creationDate: Date,
-        fundingStatus: Boolean,
-        reviewPassed: Boolean,
-        feasibilityApproval: Boolean,
-        numClinicians: Number,
-        numParticipants: Number,
-        numStudents: Number,
-        numClinicStaff: Number,
-        numPatients: Number,
+    // participants
+    PIListOfUsers: [{type: String}],
+    CoIListOfUsers: [{type: String}],
+    ColListOfUsers: [{type: String}],
+    studySize:String,
+    studyParticipants:[{type: String}],
+
+    // Project
+    officialProjectTitle:String,
+    briefProjectTitle:String,
+    startDateProject: String,
+    endDateProject: String,
+    projectDescription: String,
+    projectFund:String,
+    projectSought:String,
+    agencyName:String,
+
+    scientificPeerReviewSelect:String,
+    scientificPeerReviewText:String,
+    studyIRBREBSelect:String,
+    studyIRBREBText:String,
+
+    // ResearchAndMethodology
+    intendedMcgillLocation: [],
+    intendedNonMcgillLocation: [],
+    researchAndMethodology: [],
+    projectConception: String,
+    projectDesigned: String,
+    fundingSoughtOrIgnoredConsidered: String,
+    ethicsApproval: String,
+    recruitment: String,
+    dataCollection: String,
+    dataAnalysis: String,
+    knowledgeTranslationDissemination: String
 
     },
     {
