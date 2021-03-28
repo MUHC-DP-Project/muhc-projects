@@ -1,5 +1,5 @@
 {
-  "name": "muhc-projects",
+  "name": "pbrn-projects",
   "version": "1.0.0",
   "description": "Microservice for projects",
   "dependencies": {
@@ -13,7 +13,8 @@
     "mongoose": "^5.11.18",
     "uuid": "^8.3.2",
     "typescript": "^4.2.2",
-    "tslint": "^6.1.3"
+    "tslint": "^6.1.3",
+    "node": "^15.4.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
@@ -27,12 +28,12 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "npx tsc",
     "prestart": "npm run build",
-    "start": "npx tsc && node dist/index.js",
+    "start": "node dist/index.js",
     "test": "mocha || true"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MUHC-DP-Project/muhc-projects.git"
+    "url": "git+https://github.com/MUHC-DP-Project/pbrn-projects.git"
   },
   "keywords": [],
   "author": "",
