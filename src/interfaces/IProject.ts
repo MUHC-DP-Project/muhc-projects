@@ -1,9 +1,9 @@
 export interface IProject {
     projectId: string;
     // participants
-    PIListOfUsers: string[];
-    CoIListOfUsers: string[];
-    ColListOfUsers: string[];
+    principalInvestigators: string[];
+    coInvestigators: string[];
+    collaborators: string[];
     studySize:string;
     studyParticipants:string[];
 
@@ -13,6 +13,7 @@ export interface IProject {
     startDateProject: Date;
     endDateProject: Date;
     projectDescription: string;
+    keywords: string[];
     projectFund:string;
     projectSought:string;
     agencyName:string;
@@ -27,13 +28,13 @@ export interface IProject {
     intendedNonMcgillLocation: [];
     researchAndMethodology: [];
 
-    projectConception: string;
-    projectDesigned: string;
-    fundingSoughtOrIgnoredConsidered: string;
-    ethicsApproval: string;
-    recruitment: string;
-    dataCollection: string;
-    dataAnalysis: string;
-    knowledgeTranslationDissemination: string;
+    projectConception: object;
+    projectDesigned: object;
+    fundingSoughtIgnoredConsidered: object;
+    ethicsApproval: object;
+    recruitment: object;
+    dataCollection: object;
+    dataAnalysis: object;
+    knowledgeTranslationDissemination: object;
 
 }
