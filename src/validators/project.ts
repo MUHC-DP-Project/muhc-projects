@@ -54,6 +54,7 @@ export function projectValidator(method: string): ValidationChain[] {
                 param("projectId", "Invalid or missing ':projectId'")
                     .exists()
                     .isMongoId(),
+
                     body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
                     body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().exists(),
                     body("collaborators", "Invalid or missing 'collaborators'").isArray().exists(),
@@ -78,7 +79,6 @@ export function projectValidator(method: string): ValidationChain[] {
                     body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().exists(),
                     body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().exists(),
                     body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().exists(),
-
                     body("projectConception", "Invalid or missing 'projectConception'").isObject().exists(),
                     body("projectDesigned", "Invalid or missing 'projectDesigned'").isObject().exists(),
                     body("fundingSoughtIgnoredConsidered", "Invalid or missing 'fundingSoughtIgnoredConsidered'").isObject().exists(),
@@ -87,6 +87,7 @@ export function projectValidator(method: string): ValidationChain[] {
                     body("dataCollection", "Invalid or missing 'dataCollection'").isObject().exists(),
                     body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isObject().exists(),
                     body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isObject().exists(),
+
             ];
         }
 
