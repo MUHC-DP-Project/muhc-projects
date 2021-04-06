@@ -23,5 +23,5 @@ jobs:
         with:
           email: ${{ secrets.HEROKU_EMAIL }} # your heroku email
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          app_name: 'pbrn-users'
+          app_name: 'pbrn-projects'
           dockerfile: './'
