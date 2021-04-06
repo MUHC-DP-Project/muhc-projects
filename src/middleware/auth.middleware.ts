@@ -23,11 +23,11 @@ async function authMiddleware(request: Request, response: Response, next: NextFu
 				// special dev mode with disabled auth
 				next();
 			} else {
-				response.sendStatus(403);
+				response.status(403).send();
 			}
 		}
 	} else {
-        response.sendStatus(403).json({"error" : "no token provided"});
+        response.status(403).json({"error" : "no token provided"});
     }
 }
 
