@@ -40,4 +40,11 @@ projectRouter.delete(
     projectController.delete
 );
 
+projectRouter.post(
+    '/removeUser',
+    authMiddleware,
+    projectValidator("POST /projects/removeUser"),
+    projectController.removeUser
+)
+
 export {projectRouter};
