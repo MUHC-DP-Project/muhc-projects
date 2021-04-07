@@ -37,15 +37,14 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().exists(),
                 body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().exists(),
                 body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().exists(),
-
-                // body("projectConception", "Invalid or missing 'projectConception'").isObject().exists(),
-                // body("projectDesigned", "Invalid or missing 'projectDesigned'").isObject().exists(),
-                // body("fundingSoughtIgnoredConsidered", "Invalid or missing 'fundingSoughtIgnoredConsidered'").isObject().exists(),
-                // body("ethicsApproval", "Invalid or missing 'ethicsApproval'").isObject().exists(),
-                // body("recruitment", "Invalid or missing 'recruitment'").isObject().exists(),
-                // body("dataCollection", "Invalid or missing 'dataCollection'").isObject().exists(),
-                // body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isObject().exists(),
-                // body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isObject().exists(),
+                body("projectConception", "Invalid or missing 'projectConception'").isObject().exists(),
+                body("projectDesigned", "Invalid or missing 'projectDesigned'").isObject().exists(),
+                body("fundingSoughtIgnoredConsidered", "Invalid or missing 'fundingSoughtIgnoredConsidered'").isObject().exists(),
+                body("ethicsApproval", "Invalid or missing 'ethicsApproval'").isObject().exists(),
+                body("recruitment", "Invalid or missing 'recruitment'").isObject().exists(),
+                body("dataCollection", "Invalid or missing 'dataCollection'").isObject().exists(),
+                body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isObject().exists(),
+                body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isObject().exists(),
             ];
         }
 
