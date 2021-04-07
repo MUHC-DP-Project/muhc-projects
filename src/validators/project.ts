@@ -55,9 +55,9 @@ export function projectValidator(method: string): ValidationChain[] {
                     .exists()
                     .isMongoId(),
 
-                    body("PIListOfProjects", "Invalid or missing 'PIListOfProjects'").isArray().exists(),
-                    body("CoIListOfProjects", "Invalid or missing 'CoIListOfProjects'").isArray().exists(),
-                    body("ColListOfProjects", "Invalid or missing 'ColListOfProjects'").isArray().exists(),
+                    body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
+                    body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().exists(),
+                    body("collaborators", "Invalid or missing 'collaborators'").isArray().exists(),
                     body("studySize", "Invalid or missing 'studySize'").isString().exists(),
                     body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().exists(),
 
@@ -96,6 +96,18 @@ export function projectValidator(method: string): ValidationChain[] {
                 param("projectId", "Invalid or missing ':projectId'")
                     .exists()
                     .isMongoId()
+            ];
+        }
+
+        case "POST /projects/removeUser": {
+            return [
+                body("projectId", "Invalid or missing ':projectId'")
+                .exists()
+                .isMongoId(),
+                body("userType", "Invalid or missing ':userType'").isString().exists(),
+                body("userId", "Invalid or missing ':userId'")
+                .exists()
+                .isMongoId()
             ];
         }
     }
