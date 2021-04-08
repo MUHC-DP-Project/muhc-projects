@@ -134,8 +134,16 @@ const projectController = {
                         }
                     );
                 }
+                const userListOfProject = {
+                    projectId: project._id,
+                    principalInvestigators: project.principalInvestigators,
+                    coInvestigators: project.coInvestigators,
+                    collaborators: project.coInvestigators,
+                }
+
                 project.delete();
-                res.status(statusCodes.SUCCESS).send();
+                res.status(statusCodes.SUCCESS).json(userListOfProject);
+
             } catch(err) {
                 res.status(statusCodes.SERVER_ERROR).send(err);
             }
