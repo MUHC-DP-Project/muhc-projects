@@ -6,6 +6,13 @@ import { projectValidator } from "../validators/project";
 const projectRouter: Router = Router();
 
 projectRouter.get(
+    "/getProjects",
+    authMiddleware,
+    projectValidator("GET /projects/getProjects"),
+    projectController.getprojects
+);
+
+projectRouter.get(
     "/",
     authMiddleware,
     projectValidator("GET /projects"),
