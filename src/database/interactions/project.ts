@@ -23,4 +23,14 @@ export const projectDBInteractions = {
         }).exec();
     },
 
+    removeElementFromArray: (
+        projectId: string,
+        userType: string,
+        userId: string
+    ) : Promise<{ ok: number; n: number; nModified: number; }> => {
+        const toRemove = {};
+        toRemove[userType] = [userId]
+        return Project.updateOne({_id: projectId}, {$pullAll: toRemove}).exec();
+    }
+
 }

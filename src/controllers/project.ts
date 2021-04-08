@@ -17,6 +17,28 @@ const projectController = {
         }
     },
 
+    getprojects: async (req: Request, res: Response) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(statusCodes.MISSING_PARAMS).json(
+                {
+                    status: 422,
+                    message: `Error: there are missing parameters.`
+                }
+            );
+        } else {
+            try {
+                const projectids = req.body.listOfProjects;
+
+                const projects = await Promise.all(projectids.map(async (projectid) =>
+                    projectDBInteractions.find(projectid)
+                ));
+                res.status(statusCodes.SUCCESS).json(projects);
+            } catch (err) {
+                res.status(statusCodes.SERVER_ERROR).json(err);
+            }
+        }
+    },
     show: async (req: Request, res: Response) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -141,6 +163,27 @@ const projectController = {
             }
 
         }
+    },
+    removeUser: async (req: Request, res: Response) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.status(statusCodes.MISSING_PARAMS).json(
+                {
+                    status: 422,
+                    message: `Error: there are missing parameters.`
+                }
+            );
+        } else {
+            const {projectId, userType, userId} = req.body;
+            try {
+                await projectDBInteractions.removeElementFromArray(projectId, userType, userId);
+            } catch(err) {
+                res.status(statusCodes.SERVER_ERROR).send(err);
+            }
+
+            res.status(statusCodes.SUCCESS).send();
+        }
     }
+
 };
 export { projectController };
