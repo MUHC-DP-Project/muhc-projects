@@ -99,15 +99,14 @@ export function projectValidator(method: string): ValidationChain[] {
             ];
         }
 
-        case "POST /projects/removeUser": {
+        case "POST /projects/removeUserFromProjects": {
             return [
-                body("projectId", "Invalid or missing ':projectId'")
-                .exists()
-                .isMongoId(),
-                body("userType", "Invalid or missing ':userType'").isString().exists(),
                 body("userId", "Invalid or missing ':userId'")
                 .exists()
-                .isMongoId()
+                .isMongoId(),
+                body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
+                body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().exists(),
+                body("collaborators", "Invalid or missing 'collaborators'").isArray().exists(),
             ];
         }
     }
