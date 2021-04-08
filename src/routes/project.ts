@@ -5,53 +5,53 @@ import { projectValidator } from "../validators/project";
 
 const projectRouter: Router = Router();
 
-projectRouter.get(
+projectRouter.post(
     "/getProjects",
-    authMiddleware,
-    projectValidator("GET /projects/getProjects"),
+    // authMiddleware,
+    projectValidator("POST /projects/getProjects"),
     projectController.getprojects
 );
 
 projectRouter.get(
     "/",
-    authMiddleware,
+    // authMiddleware,
     projectValidator("GET /projects"),
     projectController.getall
 );
 
 projectRouter.get(
     "/:projectId",
-    authMiddleware,
+    // authMiddleware,
     projectValidator("GET /projects/:projectId"),
     projectController.show
 );
 
 projectRouter.post(
     "/",
-    authMiddleware,
+    // authMiddleware,
     projectValidator("POST /projects"),
     projectController.create
 );
 
 projectRouter.put(
     "/:projectId",
-    authMiddleware,
+    // authMiddleware,
     projectValidator("PUT /projects/:projectId"),
     projectController.update
 );
 
 projectRouter.delete(
     "/:projectId",
-    authMiddleware,
+    // authMiddleware,
     projectValidator("DELETE /projects/:projectId"),
     projectController.delete
 );
 
 projectRouter.post(
     '/removeUser',
-    authMiddleware,
+    // authMiddleware,
     projectValidator("POST /projects/removeUser"),
     projectController.removeUser
-)
+);
 
 export {projectRouter};

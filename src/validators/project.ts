@@ -12,7 +12,7 @@ export function projectValidator(method: string): ValidationChain[] {
             ];
         }
 
-        case "GET /projects/getProjects": {
+        case "POST /projects/getProjects": {
             return [
                 body("listOfProjects", "Invalid or missing 'listOfProjects'").isArray().exists()
             ];
@@ -34,7 +34,7 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("keywords", "Invalid or missing 'keywords'").isArray().exists(),
                 body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
                 body("projectSought", "Invalid or missing 'projectSought'").isString().optional(),
-                body("agencyName", "Invalid or missing 'agencyName'").isString().exists(),
+                body("agencyName", "Invalid or missing 'agencyName'").isString().optional(),
 
                 body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().exists(),
                 body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().exists(),
@@ -75,7 +75,7 @@ export function projectValidator(method: string): ValidationChain[] {
                     body("keywords", "Invalid or missing 'keywords'").isArray().exists(),
                     body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
                     body("projectSought", "Invalid or missing 'projectSought'").isString().optional(),
-                    body("agencyName", "Invalid or missing 'agencyName'").isString().exists(),
+                    body("agencyName", "Invalid or missing 'agencyName'").isString().optional(),
 
                     body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().exists(),
                     body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().exists(),
