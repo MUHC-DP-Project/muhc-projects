@@ -39,7 +39,6 @@ const projectController = {
             }
         }
     },
-
     show: async (req: Request, res: Response) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -165,7 +164,6 @@ const projectController = {
 
         }
     },
-
     removeUser: async (req: Request, res: Response) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -186,5 +184,6 @@ const projectController = {
             res.status(statusCodes.SUCCESS).send();
         }
     }
+
 };
 export { projectController };
