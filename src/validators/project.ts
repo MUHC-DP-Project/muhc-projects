@@ -11,6 +11,13 @@ export function projectValidator(method: string): ValidationChain[] {
                 .isMongoId()
             ];
         }
+
+        case "GET /projects/getProjects": {
+            return [
+                body("listOfProjects", "Invalid or missing 'listOfProjects'").isArray().exists()
+            ];
+        }
+
         case "POST /projects": {
             return [
                 body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
