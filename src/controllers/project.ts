@@ -154,18 +154,18 @@ const projectController = {
             );
         } else {
             try {
-                const {userId, principalInvestigators, coInvestigators, collaborators} = req.body;
+                const {userEmail, principalInvestigators, coInvestigators, collaborators} = req.body;
 
                 const arr1 = principalInvestigators.map(
-                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "principalInvestigators", userId)}
+                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "principalInvestigators", userEmail)}
                 );
 
                 const arr2 = coInvestigators.map(
-                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "coInvestigators", userId)}
+                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "coInvestigators", userEmail)}
                 );
 
                 const arr3 = collaborators.map(
-                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "collaborators", userId)}
+                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "collaborators", userEmail)}
                 );
 
                 await Promise.all(arr1 + arr2 + arr3);
