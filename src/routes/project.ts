@@ -5,6 +5,13 @@ import { projectValidator } from "../validators/project";
 
 const projectRouter: Router = Router();
 
+projectRouter.post(
+    "/getProjects",
+    authMiddleware,
+    projectValidator("POST /projects/getProjects"),
+    projectController.getprojects
+);
+
 projectRouter.get(
     "/",
     authMiddleware,
@@ -45,6 +52,6 @@ projectRouter.post(
     authMiddleware,
     projectValidator("POST /projects/removeUser"),
     projectController.removeUser
-)
+);
 
 export {projectRouter};
