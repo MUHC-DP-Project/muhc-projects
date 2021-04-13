@@ -11,11 +11,18 @@ export function projectValidator(method: string): ValidationChain[] {
                 .isMongoId()
             ];
         }
+
+        case "POST /projects/getProjects": {
+            return [
+                body("listOfProjects", "Invalid or missing 'listOfProjects'").isArray().exists()
+            ];
+        }
+
         case "POST /projects": {
             return [
-                body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
-                body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().exists(),
-                body("collaborators", "Invalid or missing 'collaborators'").isArray().exists(),
+                body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().optional(),
+                body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().optional(),
+                body("collaborators", "Invalid or missing 'collaborators'").isArray().optional(),
                 body("studySize", "Invalid or missing 'studySize'").isString().exists(),
                 body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().exists(),
 
@@ -26,8 +33,8 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("projectDescription", "Invalid or missing 'projectDescription'").isString().exists(),
                 body("keywords", "Invalid or missing 'keywords'").isArray().exists(),
                 body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
-                body("projectSought", "Invalid or missing 'projectSought'").isString().exists(),
-                body("agencyName", "Invalid or missing 'agencyName'").isString().exists(),
+                body("projectSought", "Invalid or missing 'projectSought'").isString().optional(),
+                body("agencyName", "Invalid or missing 'agencyName'").isString().optional(),
 
                 body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().exists(),
                 body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().exists(),
@@ -37,7 +44,6 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().exists(),
                 body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().exists(),
                 body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().exists(),
-
                 body("projectConception", "Invalid or missing 'projectConception'").isObject().exists(),
                 body("projectDesigned", "Invalid or missing 'projectDesigned'").isObject().exists(),
                 body("fundingSoughtIgnoredConsidered", "Invalid or missing 'fundingSoughtIgnoredConsidered'").isObject().exists(),
@@ -55,9 +61,9 @@ export function projectValidator(method: string): ValidationChain[] {
                     .exists()
                     .isMongoId(),
 
-                    body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
-                    body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().exists(),
-                    body("collaborators", "Invalid or missing 'collaborators'").isArray().exists(),
+                    body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().optional(),
+                    body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().optional(),
+                    body("collaborators", "Invalid or missing 'collaborators'").isArray().optional(),
                     body("studySize", "Invalid or missing 'studySize'").isString().exists(),
                     body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().exists(),
 
@@ -68,8 +74,8 @@ export function projectValidator(method: string): ValidationChain[] {
                     body("projectDescription", "Invalid or missing 'projectDescription'").isString().exists(),
                     body("keywords", "Invalid or missing 'keywords'").isArray().exists(),
                     body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
-                    body("projectSought", "Invalid or missing 'projectSought'").isString().exists(),
-                    body("agencyName", "Invalid or missing 'agencyName'").isString().exists(),
+                    body("projectSought", "Invalid or missing 'projectSought'").isString().optional(),
+                    body("agencyName", "Invalid or missing 'agencyName'").isString().optional(),
 
                     body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().exists(),
                     body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().exists(),
