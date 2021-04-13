@@ -6,9 +6,9 @@ export interface IProjectModel extends IProject, Document {}
 const projectSchema: Schema = new Schema(
     {
     // participants
-    PIListOfUsers: [{type: String}],
-    CoIListOfUsers: [{type: String}],
-    ColListOfUsers: [{type: String}],
+    principalInvestigators: [{type: String}],
+    coInvestigators: [{type: String}],
+    collaborators: [{type: String}],
     studySize:String,
     studyParticipants:[{type: String}],
 
@@ -18,6 +18,7 @@ const projectSchema: Schema = new Schema(
     startDateProject: String,
     endDateProject: String,
     projectDescription: String,
+    keywords:[{type: String}],
     projectFund:String,
     projectSought:String,
     agencyName:String,
@@ -31,14 +32,14 @@ const projectSchema: Schema = new Schema(
     intendedMcgillLocation: [],
     intendedNonMcgillLocation: [],
     researchAndMethodology: [],
-    projectConception: String,
-    projectDesigned: String,
-    fundingSoughtOrIgnoredConsidered: String,
-    ethicsApproval: String,
-    recruitment: String,
-    dataCollection: String,
-    dataAnalysis: String,
-    knowledgeTranslationDissemination: String
+    projectConception: Object,
+    projectDesigned: Object,
+    fundingSoughtIgnoredConsidered: Object,
+    ethicsApproval: Object,
+    recruitment: Object,
+    dataCollection: Object,
+    dataAnalysis: Object,
+    knowledgeTranslationDissemination: Object
 
     },
     {

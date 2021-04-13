@@ -11,21 +11,28 @@ export function projectValidator(method: string): ValidationChain[] {
                 .isMongoId()
             ];
         }
+
+        case "POST /projects/getProjects": {
+            return [
+                body("listOfProjects", "Invalid or missing 'listOfProjects'").isArray().exists()
+            ];
+        }
+
         case "POST /projects": {
             return [
-                body("PIListOfUsers", "Invalid or missing 'PIListOfUsers'").isArray().optional(),
-                body("CoIListOfUsers", "Invalid or missing 'CoIListOfUsers'").isArray().optional(),
-                body("ColListOfUsers", "Invalid or missing 'ColListOfUsers'").isArray().optional(),
+                body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().optional(),
+                body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().optional(),
+                body("collaborators", "Invalid or missing 'collaborators'").isArray().optional(),
+                body("studySize", "Invalid or missing 'studySize'").isString().exists(),
+                body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().exists(),
 
-                body("studySize", "Invalid or missing 'studySize'").isString().optional(),
-                body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().optional(),
-
-                body("officialProjectTitle", "Invalid or missing 'officialProjectTitle'").isString().optional(),
-                body("briefProjectTitle", "Invalid or missing 'briefProjectTitle'").isString().optional(),
-                body("startDateProject", "Invalid or missing 'startDateProject'").isString().optional(),
-                body("endDateProject", "Invalid or missing 'endDateProject'").isString().optional(),
-                body("projectDescription", "Invalid or missing 'projectDescription'").isString().optional(),
-                body("projectFund", "Invalid or missing 'projectFund'").isString().optional(),
+                body("officialProjectTitle", "Invalid or missing 'officialProjectTitle'").isString().exists(),
+                body("briefProjectTitle", "Invalid or missing 'briefProjectTitle'").isString().exists(),
+                body("startDateProject", "Invalid or missing 'startDateProject'").isString().exists(),
+                body("endDateProject", "Invalid or missing 'endDateProject'").isString().exists(),
+                body("projectDescription", "Invalid or missing 'projectDescription'").isString().exists(),
+                body("keywords", "Invalid or missing 'keywords'").isArray().exists(),
+                body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
                 body("projectSought", "Invalid or missing 'projectSought'").isString().optional(),
                 body("agencyName", "Invalid or missing 'agencyName'").isString().optional(),
 
@@ -33,21 +40,17 @@ export function projectValidator(method: string): ValidationChain[] {
                 body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().optional(),
                 body("studyIRBREBSelect", "Invalid or missing 'studyIRBREBSelect'").isString().optional(),
                 body("studyIRBREBText", "Invalid or missing 'studyIRBREBText'").isString().optional(),
-
-                body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().optional(),
-                body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().optional(),
-                body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().optional(),
-
-                body("projectConception", "Invalid or missing 'projectConception'").isString().optional(),
-                body("projectDesigned", "Invalid or missing 'projectDesigned'").isString().optional(),
-                body("fundingSoughtOrIgnoredConsidered", "Invalid or missing 'fundingSoughtOrIgnoredConsidered'").isString().optional(),
-                body("ethicsApproval", "Invalid or missing 'ethicsApproval'").isString().optional(),
-                body("recruitment", "Invalid or missing 'recruitment'").isString().optional(),
-                body("dataCollection", "Invalid or missing 'dataCollection'").isString().optional(),
-                body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isString().optional(),
-                body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isString().optional(),
-
-
+                body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().exists(),
+                body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().exists(),
+                body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().exists(),
+                body("projectConception", "Invalid or missing 'projectConception'").isObject().exists(),
+                body("projectDesigned", "Invalid or missing 'projectDesigned'").isObject().exists(),
+                body("fundingSoughtIgnoredConsidered", "Invalid or missing 'fundingSoughtIgnoredConsidered'").isObject().exists(),
+                body("ethicsApproval", "Invalid or missing 'ethicsApproval'").isObject().exists(),
+                body("recruitment", "Invalid or missing 'recruitment'").isObject().exists(),
+                body("dataCollection", "Invalid or missing 'dataCollection'").isObject().exists(),
+                body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isObject().exists(),
+                body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isObject().exists(),
             ];
         }
 
@@ -56,39 +59,38 @@ export function projectValidator(method: string): ValidationChain[] {
                 param("projectId", "Invalid or missing ':projectId'")
                     .exists()
                     .isMongoId(),
-                    body("PIListOfUsers", "Invalid or missing 'PIListOfUsers'").isArray().optional(),
-                    body("CoIListOfUsers", "Invalid or missing 'CoIListOfUsers'").isArray().optional(),
-                    body("ColListOfUsers", "Invalid or missing 'ColListOfUsers'").isArray().optional(),
+                    body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().optional(),
+                    body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().optional(),
+                    body("collaborators", "Invalid or missing 'collaborators'").isArray().optional(),
+                    body("studySize", "Invalid or missing 'studySize'").isString().exists(),
+                    body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().exists(),
 
-                    body("studySize", "Invalid or missing 'studySize'").isString().optional(),
-                    body("studyParticipants", "Invalid or missing 'studyParticipants'").isArray().optional(),
-
-                    body("officialProjectTitle", "Invalid or missing 'officialProjectTitle'").isString().optional(),
-                    body("briefProjectTitle", "Invalid or missing 'briefProjectTitle'").isString().optional(),
-                    body("startDateProject", "Invalid or missing 'startDateProject'").isString().optional(),
-                    body("endDateProject", "Invalid or missing 'endDateProject'").isString().optional(),
-                    body("projectDescription", "Invalid or missing 'projectDescription'").isString().optional(),
-                    body("projectFund", "Invalid or missing 'projectFund'").isString().optional(),
+                    body("officialProjectTitle", "Invalid or missing 'officialProjectTitle'").isString().exists(),
+                    body("briefProjectTitle", "Invalid or missing 'briefProjectTitle'").isString().exists(),
+                    body("startDateProject", "Invalid or missing 'startDateProject'").isString().exists(),
+                    body("endDateProject", "Invalid or missing 'endDateProject'").isString().exists(),
+                    body("projectDescription", "Invalid or missing 'projectDescription'").isString().exists(),
+                    body("keywords", "Invalid or missing 'keywords'").isArray().exists(),
+                    body("projectFund", "Invalid or missing 'projectFund'").isString().exists(),
                     body("projectSought", "Invalid or missing 'projectSought'").isString().optional(),
                     body("agencyName", "Invalid or missing 'agencyName'").isString().optional(),
 
-                    body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().optional(),
-                    body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().optional(),
-                    body("studyIRBREBSelect", "Invalid or missing 'studyIRBREBSelect'").isString().optional(),
-                    body("studyIRBREBText", "Invalid or missing 'studyIRBREBText'").isString().optional(),
+                    body("scientificPeerReviewSelect", "Invalid or missing 'scientificPeerReviewSelect'").isString().exists(),
+                    body("scientificPeerReviewText", "Invalid or missing 'scientificPeerReviewText'").isString().exists(),
+                    body("studyIRBREBSelect", "Invalid or missing 'studyIRBREBSelect'").isString().exists(),
+                    body("studyIRBREBText", "Invalid or missing 'studyIRBREBText'").isString().exists(),
 
-                    body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().optional(),
-                    body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().optional(),
-                    body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().optional(),
-
-                    body("projectConception", "Invalid or missing 'projectConception'").isString().optional(),
-                    body("projectDesigned", "Invalid or missing 'projectDesigned'").isString().optional(),
-                    body("fundingSoughtOrIgnoredConsidered", "Invalid or missing 'fundingSoughtOrIgnoredConsidered'").isString().optional(),
-                    body("ethicsApproval", "Invalid or missing 'ethicsApproval'").isString().optional(),
-                    body("recruitment", "Invalid or missing 'recruitment'").isString().optional(),
-                    body("dataCollection", "Invalid or missing 'dataCollection'").isString().optional(),
-                    body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isString().optional(),
-                    body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isString().optional(),
+                    body("intendedMcgillLocation", "Invalid or missing 'intendedMcgillLocation'").isArray().exists(),
+                    body("intendedNonMcgillLocation", "Invalid or missing 'intendedNonMcgillLocation'").isArray().exists(),
+                    body("researchAndMethodology", "Invalid or missing 'researchAndMethodology'").isArray().exists(),
+                    body("projectConception", "Invalid or missing 'projectConception'").isObject().exists(),
+                    body("projectDesigned", "Invalid or missing 'projectDesigned'").isObject().exists(),
+                    body("fundingSoughtIgnoredConsidered", "Invalid or missing 'fundingSoughtIgnoredConsidered'").isObject().exists(),
+                    body("ethicsApproval", "Invalid or missing 'ethicsApproval'").isObject().exists(),
+                    body("recruitment", "Invalid or missing 'recruitment'").isObject().exists(),
+                    body("dataCollection", "Invalid or missing 'dataCollection'").isObject().exists(),
+                    body("dataAnalysis", "Invalid or missing 'dataAnalysis'").isObject().exists(),
+                    body("knowledgeTranslationDissemination", "Invalid or missing 'knowledgeTranslationDissemination'").isObject().exists(),
             ];
         }
 
@@ -97,6 +99,18 @@ export function projectValidator(method: string): ValidationChain[] {
                 param("projectId", "Invalid or missing ':projectId'")
                     .exists()
                     .isMongoId()
+            ];
+        }
+
+        case "POST /projects/removeUser": {
+            return [
+                body("projectId", "Invalid or missing ':projectId'")
+                .exists()
+                .isMongoId(),
+                body("userType", "Invalid or missing ':userType'").isString().exists(),
+                body("userId", "Invalid or missing ':userId'")
+                .exists()
+                .isMongoId()
             ];
         }
     }
