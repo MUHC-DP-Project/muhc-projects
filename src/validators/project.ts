@@ -104,12 +104,11 @@ export function projectValidator(method: string): ValidationChain[] {
 
         case "POST /projects/removeUserFromProjects": {
             return [
-                body("userId", "Invalid or missing ':userId'")
-                .exists()
-                .isMongoId(),
-                body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().exists(),
-                body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().exists(),
-                body("collaborators", "Invalid or missing 'collaborators'").isArray().exists(),
+                body("userEmail", "Invalid or missing 'userEmail'")
+                .exists(),
+                body("principalInvestigators", "Invalid or missing 'principalInvestigators'").isArray().optional(),
+                body("coInvestigators", "Invalid or missing 'coInvestigators'").isArray().optional(),
+                body("collaborators", "Invalid or missing 'collaborators'").isArray().optional(),
             ];
         }
     }
