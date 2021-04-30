@@ -190,7 +190,7 @@ const projectController = {
                     async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "collaborators", userEmail)}
                 );
 
-                await Promise.all(arr1 + arr2 + arr3);
+                await Promise.all(arr1.concat(arr2).concat(arr3));
 
             } catch(err) {
                 res.status(statusCodes.SERVER_ERROR).send(err);
