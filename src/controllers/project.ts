@@ -172,7 +172,8 @@ const projectController = {
 
         }
     },
-    removeUser: async (req: Request, res: Response) => {
+
+    removeUserFromProjects: async (req: Request, res: Response) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             res.status(statusCodes.MISSING_PARAMS).json(
@@ -182,9 +183,23 @@ const projectController = {
                 }
             );
         } else {
-            const {projectId, userType, userId} = req.body;
             try {
-                await projectDBInteractions.removeElementFromArray(projectId, userType, userId);
+                const {userEmail, principalInvestigators, coInvestigators, collaborators} = req.body;
+
+                const arr1 = principalInvestigators.map(
+                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "principalInvestigators", userEmail)}
+                );
+
+                const arr2 = coInvestigators.map(
+                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "coInvestigators", userEmail)}
+                );
+
+                const arr3 = collaborators.map(
+                    async projectId => { return projectDBInteractions.removeElementFromArray(projectId, "collaborators", userEmail)}
+                );
+
+                await Promise.all(arr1.concat(arr2).concat(arr3));
+
             } catch(err) {
                 res.status(statusCodes.SERVER_ERROR).send(err);
             }
